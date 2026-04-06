@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd ../.. && pnpm --filter @workspace/royal-library run build",
+  "outputDirectory": "dist/public",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile=false",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
