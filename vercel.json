@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm --filter @workspace/royal-library run build",
-  "outputDirectory": "artifacts/royal-library/dist/public",
+  "buildCommand": "pnpm --filter @workspace/royal-library run build && cp -r artifacts/royal-library/dist/public ./vercel-out",
+  "outputDirectory": "vercel-out",
   "installCommand": "pnpm install --frozen-lockfile=false",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
