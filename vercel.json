@@ -1,6 +1,9 @@
 {
   "buildCommand": "pnpm --filter @workspace/royal-library run build",
   "outputDirectory": "artifacts/royal-library/dist/public",
-  "installCommand": "pnpm install",
-  "framework": null
+  "installCommand": "pnpm install --frozen-lockfile=false",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
