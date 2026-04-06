@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Star, CheckCircle2, BookOpen, Wifi, AirVent, Zap, Car, Droplets, Users, Quote } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
+
+const WHATSAPP_LINK = "https://wa.me/919783840000?text=Hi%2C%20I%20would%20like%20to%20inquire%20about%20Royal%20Library%2C%20Jaipur.";
 
 const queryClient = new QueryClient();
 
@@ -41,10 +44,16 @@ function Home() {
             <a href="#reviews" className="hover:text-primary transition-colors">Reviews</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
           </div>
-          <a href="tel:+919783840000" className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5 rounded-full font-medium transition-colors flex items-center gap-2 text-sm shadow-sm hover:shadow-md">
-            <Phone size={16} className="text-secondary" />
-            <span className="hidden sm:inline">Call Now</span>
-          </a>
+          <div className="flex items-center gap-2">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#20bd5a] px-5 py-2.5 rounded-full font-medium transition-colors flex items-center gap-2 text-sm shadow-sm hover:shadow-md" data-testid="nav-whatsapp">
+              <SiWhatsapp size={16} />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </a>
+            <a href="tel:+919783840000" className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5 rounded-full font-medium transition-colors flex items-center gap-2 text-sm shadow-sm hover:shadow-md" data-testid="nav-call">
+              <Phone size={16} className="text-secondary" />
+              <span className="hidden sm:inline">Call Now</span>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -83,11 +92,15 @@ function Home() {
             </motion.p>
             
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+919783840000" className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+              <a href="tel:+919783840000" className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2" data-testid="hero-call">
                 <Phone size={20} />
                 Reserve Your Seat
               </a>
-              <a href="#location" className="w-full sm:w-auto px-8 py-4 bg-white text-primary border border-border rounded-full font-medium text-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-2">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-[#25D366] text-white rounded-full font-medium text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2" data-testid="hero-whatsapp">
+                <SiWhatsapp size={22} />
+                Chat on WhatsApp
+              </a>
+              <a href="#location" className="w-full sm:w-auto px-8 py-4 bg-white text-primary border border-border rounded-full font-medium text-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-2" data-testid="hero-directions">
                 <MapPin size={20} />
                 Get Directions
               </a>
@@ -294,10 +307,21 @@ function Home() {
                 </p>
                 <a 
                   href="tel:+919783840000" 
-                  className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg mb-3"
+                  data-testid="contact-call"
                 >
                   <Phone size={20} className="text-secondary" />
                   Call +91 97838 40000
+                </a>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-[#25D366] text-white rounded-xl font-bold text-lg hover:bg-[#20bd5a] transition-all flex items-center justify-center gap-2 shadow-lg"
+                  data-testid="contact-whatsapp"
+                >
+                  <SiWhatsapp size={20} />
+                  WhatsApp Us
                 </a>
                 <p className="text-xs text-muted-foreground mt-4 uppercase tracking-wider font-semibold">No booking fees</p>
               </div>
@@ -305,6 +329,24 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-400/40 transition-shadow"
+        data-testid="floating-whatsapp"
+        aria-label="Chat on WhatsApp"
+      >
+        <SiWhatsapp size={32} />
+        <span className="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full animate-pulse border-2 border-white"></span>
+      </motion.a>
 
       {/* Footer */}
       <footer className="bg-[#0a1224] py-12 text-center border-t border-white/10">
