@@ -1,0 +1,14 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "SHcLk_roSK_T_hfg1l5Vd"
+uri = "file://artifacts/royal-library/public/images/hero.jpg"
+type = "image"
+title = "luxurious quiet study library interior warm lighting desks"
+
+[[outputs]]
+id = "EJWjRofTlYN2zE9hu0wCF"
+uri = "file://artifacts/royal-library/public/images/about.jpg"
+type = "image"
+title = "student studying deeply at a desk in a library"
